@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Robin Hultman",
+      "authorEmail": "robin.hultman@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}
