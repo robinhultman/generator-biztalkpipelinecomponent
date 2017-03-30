@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id><%= namespace %>.<%= name %></id>
-    <version>$version$</version>
+    <version>1.0</version>
     <authors><%= author %></authors>
     <projectUrl><%= projecturl %></projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
