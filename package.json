@@ -1,6 +1,6 @@
 {
   "name": "generator-biztalkpipelinecomponent",
-  "version": "0.0.0",
+  "version": "0.5.0",
   "description": "Generator for BizTalk PipelineComponents",
   "homepage": "https://github.com/robinhultman/generator-biztalkpipelinecomponent",
   "author": {
@@ -28,7 +28,8 @@
   "dependencies": {
     "yeoman-generator": "^1.0.0",
     "chalk": "^1.1.3",
-    "yosay": "^2.0.0"
+    "yosay": "^2.0.0",
+     "uuid": "^2.0.1"
   },
   "jest": {
     "testEnvironment": "node"
