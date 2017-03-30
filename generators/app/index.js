@@ -15,7 +15,8 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'namespace',
-        message: 'Namespace of the component?'
+        message: 'Namespace of the component?',
+        default: 'Shared.PipelineComponents'
       },
       {
         type: 'input',
