@@ -1,9 +1,46 @@
-# generator-biztalkpipelinecomponent [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-biztalkpipelinecomponent ![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > Generator for BizTalk PipelineComponents
+
+A hughe part of the work involved in creating a pipeline component is setting upp boiler plate code. This generator aims to relieve you of that.
+
+This generator generates this project structure:
+
+```
+<pipelinecomponentname>.sln
+│   .gitignore
+│   nuget.config    
+│   .gitattributes
+│
+└───Src
+│   |
+│   └───<pipelinecomponentname>.csproj
+│       |   <componentname>.cs
+│       |   <componentname>.component.cs
+|       |   <componentname>.nuspec
+│       |   <packages>.config
+│       │
+│       └───BizTalkComponents.Utils
+│   
+└───Tests
+│    |
+│    └───UnitTests
+|       |
+│       └───UnitTests.csproj
+└───Build
+│   
+└───   <pipelinecomponentname>.proj
+```
+
+## Compatability
+Works with:
+- BizTalk Server 2013
+- BizTalk Server 2013R2
+- BizTalk Server 2016
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-biztalkpipelinecomponent using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [node.js and npm](https://nodejs.org/en/download/current/) (we assume you are running Windows since this is a BizTalk generator).
+Install [Yeoman](http://yeoman.io) and generator-biztalk using [npm](https://www.npmjs.com/). Then in PowerShell run:
 
 ```bash
 npm install -g yo
@@ -15,14 +52,6 @@ Then generate your new project:
 ```bash
 yo biztalkpipelinecomponent
 ```
-
-## Getting To Know Yeoman
-
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
-
 ## License
 
 MIT © [Robin Hultman]()
