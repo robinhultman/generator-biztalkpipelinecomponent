@@ -119,113 +119,150 @@ module.exports = class extends Generator {
         dotnetversion = "v4.5";
         break;
     }
+    var stage = "";
+    var folder = "";
+    switch (this.props.pipelinestage) {
+      case "decode":
+        stage = "CATID_Decoder";
+        folder = "PipelineComponents"
+        break;
+      case "any":
+        stage = "CATID_Any";
+        folder = "PipelineComponents"
+        break;
+      case "disassemble":
+        stage = "CATID_DisassemblingParser";
+        folder = "Disassembler"
+        break;
+      case "validate":
+        stage = "CATID_Validate";
+        folder = "PipelineComponents"
+        break;
+      case "resolveparty":
+        stage = "CATID_PartyResolve";
+        folder = "PipelineComponents"
+        break;
+      case "preassemble":
+        stage = "CATID_Any";
+        folder = "PipelineComponents"
+        break;
+      case "assemble":
+        stage = "CATID_AssemblingSerializer";
+        folder = "Assembler"
+        break;
+      case "encode":
+        stage = "CATID_Encoder";
+        folder = "PipelineComponents"
+        break;
+    }
 
     var options = {
       name: this.props.name,
       namespace: this.props.namespace,
       componentUUID: uuid.v1().toUpperCase(),
-      componentProjectUUID : uuid.v1().toUpperCase(),
+      componentProjectUUID: uuid.v1().toUpperCase(),
       testUUID: uuid.v1().toUpperCase(),
-      compomentClassUUID : uuid.v1().toUpperCase(),
-      assemblyUUID : uuid.v1().toUpperCase(),
+      compomentClassUUID: uuid.v1().toUpperCase(),
+      assemblyUUID: uuid.v1().toUpperCase(),
       dotnetversion: dotnetversion,
       author: this.props.author,
       projecturl: this.props.homepage,
-      description: this.props.description
+      description: this.props.description,
+      pipelinestage: stage
     };
 
     this.fs.copy(
-      this.templatePath('PipelineComponents/_gitignore'),
+      this.templatePath(folder + '/_gitignore'),
       this.destinationPath('.gitignore')
     );
     this.fs.copy(
-      this.templatePath('PipelineComponents/_gitattributes'),
+      this.templatePath(folder + '/_gitattributes'),
       this.destinationPath('.gitattributes')
     );
     this.fs.copy(
-      this.templatePath('PipelineComponents/nuget.config'),
+      this.templatePath(folder + '/nuget.config'),
       this.destinationPath('nuget.config')
     );
     this.fs.copyTpl(
-      this.templatePath('PipelineComponents/PipelineComponent.sln'),
+      this.templatePath(folder + '/PipelineComponent.sln'),
       this.destinationPath(this.props.namespace + "." + this.props.name + '.sln'),
       options
     );
     this.fs.copy(
-      this.templatePath('PipelineComponents/Tests/UnitTests/packages.config'),
+      this.templatePath(folder + '/Tests/UnitTests/packages.config'),
       this.destinationPath('Tests/UnitTests/packages.config')
     );
     this.fs.copyTpl(
-      this.templatePath('PipelineComponents/Tests/UnitTests/Tests.csproj'),
+      this.templatePath(folder + '/Tests/UnitTests/Tests.csproj'),
       this.destinationPath('Tests/UnitTests/UnitTests.csproj'),
       options
     );
     this.fs.copyTpl(
-      this.templatePath('PipelineComponents/Tests/UnitTests/Tests.cs'),
+      this.templatePath(folder + '/Tests/UnitTests/Tests.cs'),
       this.destinationPath('Tests/UnitTests/' + this.props.name + 'Tests.cs'),
       options
     );
     this.fs.copyTpl(
-      this.templatePath('PipelineComponents/Tests/UnitTests/Properties/AssemblyInfo.cs'),
+      this.templatePath(folder + '/Tests/UnitTests/Properties/AssemblyInfo.cs'),
       this.destinationPath('Tests/UnitTests/Properties/AssemblyInfo.cs'),
       options
     );
     this.fs.copy(
-      this.templatePath('PipelineComponents/Src/packages.config'),
+      this.templatePath(folder + '/Src/packages.config'),
       this.destinationPath('Src/packages.config')
     );
     this.fs.copy(
-      this.templatePath('PipelineComponents/Src/BizTalkComponents.Utils/ContextExtensions.cs'),
+      this.templatePath(folder + '/Src/BizTalkComponents.Utils/ContextExtensions.cs'),
       this.destinationPath('Src/BizTalkComponents.Utils/ContextExtensions.cs')
     );
     this.fs.copy(
-      this.templatePath('PipelineComponents/Src/BizTalkComponents.Utils/ContextProperties.cs'),
+      this.templatePath(folder + '/Src/BizTalkComponents.Utils/ContextProperties.cs'),
       this.destinationPath('Src/BizTalkComponents.Utils/ContextProperties.cs')
     );
     this.fs.copy(
-      this.templatePath('PipelineComponents/Src/BizTalkComponents.Utils/ContextProperty.cs'),
+      this.templatePath(folder + '/Src/BizTalkComponents.Utils/ContextProperty.cs'),
       this.destinationPath('Src/BizTalkComponents.Utils/ContextProperty.cs')
     );
     this.fs.copy(
-      this.templatePath('PipelineComponents/Src/BizTalkComponents.Utils/PropertyBagHelper.cs'),
+      this.templatePath(folder + '/Src/BizTalkComponents.Utils/PropertyBagHelper.cs'),
       this.destinationPath('Src/BizTalkComponents.Utils/PropertyBagHelper.cs')
     );
     this.fs.copy(
-      this.templatePath('PipelineComponents/Src/BizTalkComponents.Utils/RequiredRuntimeAttribute.cs'),
+      this.templatePath(folder + '/Src/BizTalkComponents.Utils/RequiredRuntimeAttribute.cs'),
       this.destinationPath('Src/BizTalkComponents.Utils/RequiredRuntimeAttribute.cs')
     );
     this.fs.copy(
-      this.templatePath('PipelineComponents/Src/BizTalkComponents.Utils/ValidationHelper.cs'),
+      this.templatePath(folder + '/Src/BizTalkComponents.Utils/ValidationHelper.cs'),
       this.destinationPath('Src/BizTalkComponents.Utils/ValidationHelper.cs')
     );
 
     this.fs.copyTpl(
-      this.templatePath('PipelineComponents/Src/component.nuspec'),
+      this.templatePath(folder + '/Src/component.nuspec'),
       this.destinationPath('Src/' + this.props.namespace + '.' + this.props.name + '.nuspec'),
       options
     );
     this.fs.copyTpl(
-      this.templatePath('PipelineComponents/Src/Component.csproj'),
+      this.templatePath(folder + '/Src/Component.csproj'),
       this.destinationPath('Src/' + this.props.name + '.csproj'),
       options
     );
     this.fs.copyTpl(
-      this.templatePath('PipelineComponents/Src/Component.cs'),
+      this.templatePath(folder + '/Src/Component.cs'),
       this.destinationPath('Src/' + this.props.name + '.cs'),
       options
     );
     this.fs.copyTpl(
-      this.templatePath('PipelineComponents/Src/Component.Component.cs'),
+      this.templatePath(folder + '/Src/Component.Component.cs'),
       this.destinationPath('Src/' + this.props.name + '.Component.cs'),
       options
     );
     this.fs.copyTpl(
-      this.templatePath('PipelineComponents/Src/Properties/AssemblyInfo.cs'),
+      this.templatePath(folder + '/Src/Properties/AssemblyInfo.cs'),
       this.destinationPath('Src/Properties/AssemblyInfo.cs'),
       options
     );
     this.fs.copyTpl(
-      this.templatePath('PipelineComponents/Build/Build.proj'),
+      this.templatePath(folder + '/Build/Build.proj'),
       this.destinationPath('Build/' + this.props.namespace + '.' + this.props.name + '.proj'),
       options
     );
