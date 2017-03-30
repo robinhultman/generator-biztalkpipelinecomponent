@@ -4,17 +4,18 @@ using System.ComponentModel.DataAnnotations;
 using BizTalkComponents.Utils;
 using Microsoft.BizTalk.Component.Interop;
 using Microsoft.BizTalk.Message.Interop;
-using IComponent = Microsoft.BizTalk.Component.Interop.IComponent;
+using System.Collections;
 
 namespace <%= namespace %>.<%= name %>
 {
     [ComponentCategory(CategoryTypes.CATID_PipelineComponent)]
     [System.Runtime.InteropServices.Guid("<%= componentUUID %>")]
-    [ComponentCategory(CategoryTypes.<%= pipelinestage %>)]
-    public partial class <%= name %> : IComponent, IBaseComponent,
+      [ComponentCategory(CategoryTypes.CATID_AssemblingSerializer)]
+    public partial class <%= name %> : IAssemblerComponent, IBaseComponent,
                                         IPersistPropertyBag, IComponentUI
     {
-
+        private readonly Queue _outputQueue = new Queue();
+        
         //Sample property
         private const string PropertyName = "PropertyName";
 
@@ -23,7 +24,7 @@ namespace <%= namespace %>.<%= name %>
         [RequiredRuntime]
         public string Property { get; set; }
 
-        public IBaseMessage Execute(IPipelineContext pContext, IBaseMessage pInMsg)
+        public void AddDocument(IPipelineContext pContext, IBaseMessage pInMsg)
         {
             string errorMessage;
 
@@ -33,9 +34,19 @@ namespace <%= namespace %>.<%= name %>
             }
 
             //Implementation goes here
-            return pInMsg;
+            _outputQueue.Enqueue(pInMsg);
         }
 
+        public IBaseMessage Assemble(IPipelineContext pContext)
+        {
+            if (_outputQueue.Count > 0)
+            {
+                return (IBaseMessage)_outputQueue.Dequeue();
+            }
+
+            return null;
+        }
+        
         public void Load(IPropertyBag propertyBag, int errorLog)
         {
             Property = PropertyBagHelper.ReadPropertyBag(propertyBag, PropertyName, Property);

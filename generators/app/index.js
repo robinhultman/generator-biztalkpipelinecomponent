@@ -21,22 +21,69 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'name',
-        message: 'Name of the component?'
+        message: 'Name of the component?',
+        default: 'MyComponent'
       },
       {
         type: 'input',
         name: 'homepage',
-        message: 'Project homepage?'
+        message: 'Project homepage?',
+        default: 'myhomepage'
       },
       {
         type: 'input',
         name: 'author',
-        message: 'Author?'
+        message: 'Author?',
+        default: 'Author'
       },
       {
         type: 'input',
         name: 'description',
-        message: 'Describe the component'
+        message: 'Describe the component',
+        default: 'description of component'
+      },
+      {
+        type: 'list',
+        name: 'pipelinestage',
+        message: 'Which pipeline stage?',
+        default: 'Any',
+        choices: [
+          {
+            name: 'Any',
+            value: 'any'
+          },
+          {
+            name: 'Decode',
+            value: 'decode'
+          },
+
+          {
+            name: 'Disassemble',
+            value: 'disassemble'
+          },
+          {
+            name: 'Validate',
+            value: 'validate'
+          }
+          ,
+          {
+            name: 'ResolveParty',
+            value: 'resolveparty'
+          },
+          {
+            name: 'PreAssemble',
+            value: 'preassemble'
+          },
+          {
+            name: 'Assemble',
+            value: 'assemble'
+          }
+          ,
+          {
+            name: 'Encode',
+            value: 'encode'
+          }
+        ]
       },
       {
         type: 'list',

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id><%= namespace %>.<%= name %></id>
+    <version>1.0</version>
+    <authors><%= author %></authors>
+    <projectUrl><%= projecturl %></projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description><%= description %></description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>BizTalk</tags>
+  </metadata>
+</package>
