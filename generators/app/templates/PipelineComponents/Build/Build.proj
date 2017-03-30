@@ -18,6 +18,8 @@
               DestinationPath="$(DestinationPath)"
               ApplicationName="$(ApplicationName)"
               BtsAssemblies="@(BtsAssembly)"
+              
+	      Resources="@(Resource)"
               SourceLocation="$(SourceLocation)"
               ReferenceApplications="@(ReferenceApplication)" />
   </Target>
