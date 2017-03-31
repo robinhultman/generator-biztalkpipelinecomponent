@@ -82,6 +82,14 @@ module.exports = class extends Generator {
           {
             name: 'Encode',
             value: 'encode'
+          },
+          {
+            name: 'Receive',
+            value: 'receive'
+          },
+          {
+            name: 'Send',
+            value: 'send'
           }
         ]
       },
@@ -152,6 +160,14 @@ module.exports = class extends Generator {
         break;
       case "encode":
         stage = "CATID_Encoder";
+        folder = "PipelineComponents"
+        break;
+      case "receive":
+        stage = "CATID_Receiver";
+        folder = "PipelineComponents"
+        break;
+      case "send":
+        stage = "CATID_Transmitter";
         folder = "PipelineComponents"
         break;
     }
