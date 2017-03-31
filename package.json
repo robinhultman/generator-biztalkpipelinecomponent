@@ -1,6 +1,6 @@
 {
   "name": "generator-biztalkpipelinecomponent",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Generator for BizTalk PipelineComponents",
   "homepage": "https://github.com/robinhultman/generator-biztalkpipelinecomponent",
   "author": {
