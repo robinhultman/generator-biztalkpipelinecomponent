@@ -225,56 +225,56 @@ module.exports = class extends Generator {
     );
     this.fs.copy(
       this.templatePath(folder + '/Src/packages.config'),
-      this.destinationPath('Src/packages.config')
+      this.destinationPath('Src/' + this.props.name + '/packages.config')
     );
     this.fs.copy(
       this.templatePath(folder + '/Src/BizTalkComponents.Utils/ContextExtensions.cs'),
-      this.destinationPath('Src/BizTalkComponents.Utils/ContextExtensions.cs')
+      this.destinationPath('Src/' + this.props.name + '/BizTalkComponents.Utils/ContextExtensions.cs')
     );
     this.fs.copy(
       this.templatePath(folder + '/Src/BizTalkComponents.Utils/ContextProperties.cs'),
-      this.destinationPath('Src/BizTalkComponents.Utils/ContextProperties.cs')
+      this.destinationPath('Src/' + this.props.name + '/BizTalkComponents.Utils/ContextProperties.cs')
     );
     this.fs.copy(
       this.templatePath(folder + '/Src/BizTalkComponents.Utils/ContextProperty.cs'),
-      this.destinationPath('Src/BizTalkComponents.Utils/ContextProperty.cs')
+      this.destinationPath('Src/' + this.props.name + '/BizTalkComponents.Utils/ContextProperty.cs')
     );
     this.fs.copy(
       this.templatePath(folder + '/Src/BizTalkComponents.Utils/PropertyBagHelper.cs'),
-      this.destinationPath('Src/BizTalkComponents.Utils/PropertyBagHelper.cs')
+      this.destinationPath('Src/' + this.props.name + '/BizTalkComponents.Utils/PropertyBagHelper.cs')
     );
     this.fs.copy(
       this.templatePath(folder + '/Src/BizTalkComponents.Utils/RequiredRuntimeAttribute.cs'),
-      this.destinationPath('Src/BizTalkComponents.Utils/RequiredRuntimeAttribute.cs')
+      this.destinationPath('Src/' + this.props.name + '/BizTalkComponents.Utils/RequiredRuntimeAttribute.cs')
     );
     this.fs.copy(
       this.templatePath(folder + '/Src/BizTalkComponents.Utils/ValidationHelper.cs'),
-      this.destinationPath('Src/BizTalkComponents.Utils/ValidationHelper.cs')
+      this.destinationPath('Src/' + this.props.name + '/BizTalkComponents.Utils/ValidationHelper.cs')
     );
 
     this.fs.copyTpl(
       this.templatePath(folder + '/Src/component.nuspec'),
-      this.destinationPath('Src/' + this.props.namespace + '.' + this.props.name + '.nuspec'),
+      this.destinationPath('Src/' + this.props.name +'/' + this.props.namespace + '.' + this.props.name + '.nuspec'),
       options
     );
     this.fs.copyTpl(
       this.templatePath(folder + '/Src/Component.csproj'),
-      this.destinationPath('Src/' + this.props.name + '.csproj'),
+      this.destinationPath('Src/' + this.props.name + '/' + this.props.name + '.csproj'),
       options
     );
     this.fs.copyTpl(
       this.templatePath(folder + '/Src/Component.cs'),
-      this.destinationPath('Src/' + this.props.name + '.cs'),
+      this.destinationPath('Src/' + this.props.name + '/' + this.props.name + '.cs'),
       options
     );
     this.fs.copyTpl(
       this.templatePath(folder + '/Src/Component.Component.cs'),
-      this.destinationPath('Src/' + this.props.name + '.Component.cs'),
+      this.destinationPath('Src/' + this.props.name + '/' + this.props.name + '.Component.cs'),
       options
     );
     this.fs.copyTpl(
       this.templatePath(folder + '/Src/Properties/AssemblyInfo.cs'),
-      this.destinationPath('Src/Properties/AssemblyInfo.cs'),
+      this.destinationPath('Src/' + this.props.name + '/Properties/AssemblyInfo.cs'),
       options
     );
     this.fs.copyTpl(
