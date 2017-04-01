@@ -27,8 +27,8 @@ This generator generates this project structure:
 |       |
 │       └───UnitTests.csproj
 └───Build
-│   
-└───   <pipelinecomponentname>.proj
+    │   
+    └───<pipelinecomponentname>.proj
 ```
 
 ## Compatability
