@@ -11,4 +11,7 @@
     <copyright>Copyright 2014</copyright>
     <tags>BizTalk</tags>
   </metadata>
+<files>
+    <file src="\bin\release\<%= namespace %>.<%= name %>.dll" target="lib\<%= dotnetnugetversion %>"/>
+  </files>
 </package>
