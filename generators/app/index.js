@@ -119,12 +119,15 @@ module.exports = class extends Generator {
 
   writing() {
     var dotnetversion = "";
+    var dotnetnugetversion = "";
     switch (this.props.dotnetversion) {
       case "v46":
         dotnetversion = "v4.6";
+        dotnetnugetversion = "net46";
         break;
       case "v45":
         dotnetversion = "v4.5";
+        dotnetnugetversion = "net45";
         break;
     }
     var stage = "";
@@ -181,6 +184,7 @@ module.exports = class extends Generator {
       compomentClassUUID: uuid.v1().toUpperCase(),
       assemblyUUID: uuid.v1().toUpperCase(),
       dotnetversion: dotnetversion,
+      dotnetnugetversion: dotnetnugetversion,
       author: this.props.author,
       projecturl: this.props.homepage,
       description: this.props.description,
