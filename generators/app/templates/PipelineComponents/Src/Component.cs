@@ -35,15 +35,5 @@ namespace <%= namespace %>.<%= name %>
             //Implementation goes here
             return pInMsg;
         }
-
-        public void Load(IPropertyBag propertyBag, int errorLog)
-        {
-            Property = PropertyBagHelper.ReadPropertyBag(propertyBag, PropertyName, Property);
-        }
-
-        public void Save(IPropertyBag propertyBag, bool clearDirty, bool saveAllProperties)
-        {
-            PropertyBagHelper.WritePropertyBag(propertyBag, PropertyName, Property);
-        }
     }
 }
