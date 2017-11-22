@@ -15,9 +15,6 @@ namespace <%= namespace %>.<%= name %>
                                         IPersistPropertyBag, IComponentUI
     {
         private readonly Queue _outputQueue = new Queue();
-        
-        //Sample property
-        private const string PropertyName = "PropertyName";
 
         [DisplayName("Property Path")]
         [Description("Property description")]
