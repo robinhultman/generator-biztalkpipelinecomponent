@@ -43,5 +43,34 @@ namespace <%= namespace %>.<%= name %>
         }
 
         public IntPtr Icon { get { return IntPtr.Zero; } }
+
+        public void Load(IPropertyBag propertyBag, int errorLog)
+        {
+             var props = this.GetType().GetProperties(System.Reflection.BindingFlags.Public 
+             | System.Reflection.BindingFlags.Instance);
+
+             foreach (var prop in props)
+             {
+                 if (prop.CanRead & prop.CanWrite)
+                 {
+                     prop.SetValue(this, PropertyBagHelper.ReadPropertyBag(propertyBag, prop.Name, 
+                        prop.GetValue(this)));
+                 }
+             }
+        }
+
+        public void Save(IPropertyBag propertyBag, bool clearDirty, bool saveAllProperties)
+        {
+            var props = this.GetType().GetProperties(System.Reflection.BindingFlags.Public 
+                | System.Reflection.BindingFlags.Instance);
+
+             foreach (var prop in props)
+             {
+                 if (prop.CanRead & prop.CanWrite)
+                 {
+                     PropertyBagHelper.WritePropertyBag(propertyBag, prop.Name, prop.GetValue(this));
+                 }
+             }
+        }
     }
 }
