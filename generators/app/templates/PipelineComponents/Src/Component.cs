@@ -14,10 +14,6 @@ namespace <%= namespace %>.<%= name %>
     public partial class <%= name %> : IComponent, IBaseComponent,
                                         IPersistPropertyBag, IComponentUI
     {
-
-        //Sample property
-        private const string PropertyName = "PropertyName";
-
         [DisplayName("Property Path")]
         [Description("Property description")]
         [RequiredRuntime]

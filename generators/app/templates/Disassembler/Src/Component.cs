@@ -17,9 +17,6 @@ namespace <%= namespace %>.<%= name %>
 
          private readonly Queue _outputQueue = new Queue();
 
-        //Sample property
-        private const string PropertyName = "PropertyName";
-
         [DisplayName("Property Path")]
         [Description("Property description")]
         [RequiredRuntime]
