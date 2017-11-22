@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using BizTalkComponents.Utils;
+using Microsoft.BizTalk.Component.Interop;
 
 namespace <%= namespace %>.<%= name %>
 {
