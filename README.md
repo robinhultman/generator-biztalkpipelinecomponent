@@ -1,7 +1,7 @@
 # generator-biztalkpipelinecomponent [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url] 
 > Generator for BizTalk PipelineComponents
 
-A hughe part of the work involved in creating a pipeline component is setting upp boiler plate code. This generator aims to relieve you of that.
+A huge part of the work involved in creating a pipeline component is setting upp boiler plate code. This generator aims to relieve you of that.
 
 This generator generates this project structure:
 
